@@ -1,75 +1,25 @@
 // ══════════════════════════════════════════════════════════
-//  BASES DE DATOS
+//  BASES DE DATOS (Dinamica + Fallback)
 // ══════════════════════════════════════════════════════════
-const CPUS=[
-  {n:"— Selecciona CPU —",s:0,c:0},
-  {n:"AMD Ryzen 9 7950X (16c)",s:100,c:16},{n:"AMD Ryzen 9 7900X (12c)",s:94,c:12},
-  {n:"AMD Ryzen 7 7700X (8c)", s:82,c:8}, {n:"AMD Ryzen 5 7600X (6c)", s:66,c:6},
-  {n:"AMD Ryzen 9 5950X (16c)",s:96,c:16},{n:"AMD Ryzen 9 5900X (12c)",s:91,c:12},
-  {n:"AMD Ryzen 7 5800X (8c)", s:76,c:8}, {n:"AMD Ryzen 7 5700X (8c)", s:70,c:8},
-  {n:"AMD Ryzen 5 5600X (6c)", s:58,c:6}, {n:"AMD Ryzen 5 5600G (6c)", s:50,c:6},
-  {n:"AMD Ryzen 7 3700X (8c)", s:62,c:8}, {n:"AMD Ryzen 5 3600 (6c)",  s:48,c:6},
-  {n:"AMD Ryzen 5 3400G (4c)", s:30,c:4}, {n:"AMD Ryzen 3 3200G (4c)", s:22,c:4},
-  {n:"Intel Core i9-13900K (24c)",s:98,c:24},{n:"Intel Core i7-13700K (16c)",s:84,c:16},
-  {n:"Intel Core i5-13600K (14c)",s:72,c:14},{n:"Intel Core i9-12900K (16c)",s:92,c:16},
-  {n:"Intel Core i7-12700K (12c)",s:80,c:12},{n:"Intel Core i5-12600K (10c)",s:66,c:10},
-  {n:"Intel Core i5-12400 (6c)", s:54,c:6},{n:"Intel Core i3-12100 (4c)", s:34,c:4},
-  {n:"Intel Core i7-11700K (8c)",s:68,c:8},{n:"Intel Core i7-10700K (8c)",s:62,c:8},
-  {n:"Intel Core i5-10400 (6c)", s:42,c:6},{n:"Intel Core i3-10100 (4c)",s:28,c:4},
-  {n:"Intel Core i5-9600K (6c)", s:38,c:6},{n:"Intel Core i5-8400 (6c)", s:32,c:6},
-  {n:"Intel Core i3-8100 (4c)",  s:20,c:4},{n:"AMD FX-8350 (8c)",        s:14,c:8},
-  {n:"Intel Core i5-7400 (4c)",  s:18,c:4},{n:"Intel Core i3-6100 (2c)", s:12,c:2},
-  {n:"Otro / No sé",             s:25,c:4},
-];
-const GPUS=[
-  {n:"— Selecciona GPU —",s:0,v:0,rt:false,vk:false},
-  {n:"NVIDIA RTX 4090 — 24 GB",     s:100,v:24,rt:true, vk:true},
-  {n:"NVIDIA RTX 4080 Super — 16 GB",s:88, v:16,rt:true, vk:true},
-  {n:"NVIDIA RTX 4070 Ti — 12 GB",  s:80, v:12,rt:true, vk:true},
-  {n:"NVIDIA RTX 4070 — 12 GB",     s:72, v:12,rt:true, vk:true},
-  {n:"NVIDIA RTX 4060 Ti — 8 GB",   s:60, v:8, rt:true, vk:true},
-  {n:"NVIDIA RTX 4060 — 8 GB",      s:52, v:8, rt:true, vk:true},
-  {n:"NVIDIA RTX 3090 — 24 GB",     s:86, v:24,rt:true, vk:true},
-  {n:"NVIDIA RTX 3080 — 10 GB",     s:80, v:10,rt:true, vk:true},
-  {n:"NVIDIA RTX 3070 Ti — 8 GB",   s:70, v:8, rt:true, vk:true},
-  {n:"NVIDIA RTX 3070 — 8 GB",      s:65, v:8, rt:true, vk:true},
-  {n:"NVIDIA RTX 3060 Ti — 8 GB",   s:60, v:8, rt:true, vk:true},
-  {n:"NVIDIA RTX 3060 — 12 GB",     s:54, v:12,rt:true, vk:true},
-  {n:"NVIDIA RTX 3050 — 8 GB",      s:42, v:8, rt:true, vk:true},
-  {n:"NVIDIA RTX 2080 Ti — 11 GB",  s:76, v:11,rt:true, vk:true},
-  {n:"NVIDIA RTX 2070 Super — 8 GB",s:60, v:8, rt:true, vk:true},
-  {n:"NVIDIA RTX 2060 — 6 GB",      s:46, v:6, rt:true, vk:true},
-  {n:"NVIDIA GTX 1660 Super — 6 GB",s:38, v:6, rt:false,vk:true},
-  {n:"NVIDIA GTX 1660 — 6 GB",      s:33, v:6, rt:false,vk:true},
-  {n:"NVIDIA GTX 1650 — 4 GB",      s:24, v:4, rt:false,vk:true},
-  {n:"NVIDIA GTX 1080 Ti — 11 GB",  s:50, v:11,rt:false,vk:true},
-  {n:"NVIDIA GTX 1080 — 8 GB",      s:42, v:8, rt:false,vk:true},
-  {n:"NVIDIA GTX 1070 — 8 GB",      s:36, v:8, rt:false,vk:true},
-  {n:"NVIDIA GTX 1060 — 6 GB",      s:28, v:6, rt:false,vk:true},
-  {n:"NVIDIA GTX 1050 Ti — 4 GB",   s:18, v:4, rt:false,vk:true},
-  {n:"NVIDIA GTX 1050 — 2 GB",      s:12, v:2, rt:false,vk:false},
-  {n:"NVIDIA GTX 950 / 960 — 2 GB", s:9,  v:2, rt:false,vk:false},
-  {n:"AMD RX 7900 XTX — 24 GB",     s:92, v:24,rt:true, vk:true},
-  {n:"AMD RX 7800 XT — 16 GB",      s:68, v:16,rt:true, vk:true},
-  {n:"AMD RX 7600 — 8 GB",          s:46, v:8, rt:true, vk:true},
-  {n:"AMD RX 6800 XT — 16 GB",      s:72, v:16,rt:true, vk:true},
-  {n:"AMD RX 6700 XT — 12 GB",      s:56, v:12,rt:true, vk:true},
-  {n:"AMD RX 6600 XT — 8 GB",       s:44, v:8, rt:true, vk:true},
-  {n:"AMD RX 6600 — 8 GB",          s:38, v:8, rt:true, vk:true},
-  {n:"AMD RX 5700 XT — 8 GB",       s:50, v:8, rt:false,vk:true},
-  {n:"AMD RX 580 — 8 GB",           s:28, v:8, rt:false,vk:true},
-  {n:"AMD RX 570 — 4 GB",           s:20, v:4, rt:false,vk:true},
-  {n:"Intel Arc A770 — 16 GB",      s:48, v:16,rt:true, vk:true},
-  {n:"Intel Arc A750 — 8 GB",       s:38, v:8, rt:true, vk:true},
-  {n:"Gráficos integrados Intel",   s:5,  v:0, rt:false,vk:false},
-  {n:"Gráficos integrados AMD",     s:8,  v:0, rt:false,vk:false},
-  {n:"Sin GPU dedicada / No sé",    s:3,  v:0, rt:false,vk:false},
-];
+let CPUS = [];
+let GPUS = [];
 
+const fallbackData = {
+  cpus: [
+    {n:"AMD Ryzen 5 5600X (6c)",s:160,c:6},
+    {n:"Intel Core i5-12400F (6c)",s:160,c:6},
+    {n:"AMD Ryzen 9 7900X (12c)",s:450,c:12}
+  ],
+  gpus: [
+    {n:"NVIDIA RTX 3060 — 12 GB",s:2400,v:12,rt:true,vk:true},
+    {n:"AMD Radeon RX 6600 — 8 GB",s:1200,v:8,rt:true,vk:true},
+    {n:"NVIDIA RTX 4070 — 12 GB",s:5500,v:12,rt:true,vk:true}
+  ]
+};
 // ── Catálogo de upgrades recomendados ─────────────────────
 const UPS={
   gpu_none:   {name:"NVIDIA RTX 3060 — 12 GB", why:"Sin GPU dedicada, Blender Cycles sólo usa CPU: 10-50x más lento. La RTX 3060 tiene la mejor relación VRAM/precio de entrada.", q:"RTX 3060 12GB comprar precio"},
-  gpu_no_vk:  {name:"NVIDIA GTX 1650 / AMD RX 580", why:"Tu GPU no soporta Vulkan, requerido por Blender 4.x para Eevee Next. Necesitas actualizar para que Eevee funcione correctamente.", q:"GTX 1650 precio oferta"},
+  gpu_no_vk:  {name:"NVIDIA GTX 1650 / AMD RX 580 o superior", why:"Tu GPU no soporta Vulkan, requerido por Blender 5.x para Eevee Next. Necesitas actualizar para que Eevee funcione correctamente.", q:"GTX 1650 precio oferta"},
   gpu_no_rt:  {name:"NVIDIA RTX 3060 — 12 GB", why:"Sin Ray Tracing no puedes usar Cycles GPU con OptiX. La RTX 3060 soporta OptiX y tiene 12 GB VRAM — más que modelos más caros.", q:"RTX 3060 12GB precio 2024"},
   gpu_weak:   {name:"NVIDIA RTX 3060 Ti — 8 GB", why:"Tu GPU tiene bajo rendimiento para Blender. La RTX 3060 Ti ofrece excelente precio/rendimiento y acelera Cycles GPU con OptiX.", q:"RTX 3060 Ti precio oferta"},
   vram_crit:  {name:"NVIDIA RTX 3060 — 12 GB", why:"Con menos de 4 GB de VRAM Blender fallará al cargar escenas con texturas básicas. La RTX 3060 tiene 12 GB, la mayor VRAM en su rango de precio.", q:"RTX 3060 12GB precio"},
@@ -90,16 +40,35 @@ const UPS={
 // ══════════════════════════════════════════════════════════
 let OS="windows";
 function selOS(b){document.querySelectorAll('.osb').forEach(x=>x.classList.remove('on'));b.classList.add('on');OS=b.dataset.os;}
-const AMAZON_TAG='alexriquelme-20';
+const AMAZON_TAG='tu-id-de-afiliado-20';
 function amz(q){return"https://www.amazon.com/s?k="+encodeURIComponent(q)+"&tag="+AMAZON_TAG;}
 function ggl(q){return"https://www.google.com/search?tbm=shop&q="+encodeURIComponent(q);}
 function ramSc(r){return r>=64?100:r>=32?80:r>=16?55:r>=8?28:8;}
-function totalSc(cpu,gpu,ram){return Math.round(cpu.s*0.30+gpu.s*0.45+ramSc(ram)*0.25);}
 
-function populate(){
-  const cs=document.getElementById('sCPU'),gs=document.getElementById('sGPU');
-  CPUS.forEach(c=>{const o=new Option(c.n,c.n);cs.add(o);});
-  GPUS.forEach(g=>{const o=new Option(g.n,g.n);gs.add(o);});
+function normalizedCpu(s){ return Math.min(100, (s / 250) * 100); }
+function normalizedGpu(s){ return Math.min(100, (s / 3000) * 100); }
+
+function totalSc(cpu,gpu,ram){
+  return Math.round(normalizedCpu(cpu.s)*0.30 + normalizedGpu(gpu.s)*0.45 + ramSc(ram)*0.25);
+}
+
+async function populate(){
+  try {
+    const res = await fetch('benchmarks.json');
+    if(!res.ok) throw new Error('Network error');
+    const data = await res.json();
+    CPUS = data.cpus;
+    GPUS = data.gpus;
+  } catch(e) {
+    console.warn("Usando fallback DB por error (ej: CORS local):", e);
+    CPUS = fallbackData.cpus;
+    GPUS = fallbackData.gpus;
+  }
+  
+  const cs=document.getElementById('cpuList'),gs=document.getElementById('gpuList');
+  if(!cs || !gs) return;
+  CPUS.forEach(c=>{const o=document.createElement('option');o.value=c.n;cs.appendChild(o);});
+  GPUS.forEach(g=>{const o=document.createElement('option');o.value=g.n;gs.appendChild(o);});
 }
 
 // Clasifica un score en nivel: 'crit', 'warn', 'ok'
@@ -145,18 +114,18 @@ function render(cpu,gpu,ram,stg,use){
   const ramS=ramSc(ram),score=totalSc(cpu,gpu,ram);
   const stgS=stg==='nvme'?100:stg==='sata'?65:18;
 
-  // Clasificar cada componente
+  // Clasificar cada componente con reglas actualizadas
   const vramS=gpu.v>=12?100:gpu.v>=8?75:gpu.v>=6?50:gpu.v>=4?28:5;
-  const cpuT =tier(cpu.s,35,60);
-  const gpuT =tier(gpu.s,28,55);
+  const cpuT =tier(cpu.s,80,150);
+  const gpuT =tier(gpu.s,600,1200);
   const vramT=tier(vramS,30,60);
   const ramT =tier(ramS, 30,60);
   const stgT =tier(stgS, 30,65);
 
   // Cuello de botella = componente con menor score ponderado
   const ranked=[
-    {id:'cpu',  label:'CPU',             s:cpu.s, t:cpuT,  name:cpu.n.split('(')[0].trim()},
-    {id:'gpu',  label:'GPU',             s:gpu.s, t:gpuT,  name:gpu.n.split('—')[0].trim()},
+    {id:'cpu',  label:'CPU',             s:Math.round(normalizedCpu(cpu.s)), t:cpuT,  name:cpu.n.split('(')[0].trim()},
+    {id:'gpu',  label:'GPU',             s:Math.round(normalizedGpu(gpu.s)), t:gpuT,  name:gpu.n.split('—')[0].trim()},
     {id:'vram', label:'VRAM GPU',        s:vramS, t:vramT, name:gpu.v>0?gpu.v+' GB':'Sin dedicada'},
     {id:'ram',  label:'RAM del sistema', s:ramS,  t:ramT,  name:ram+' GB'},
     {id:'stg',  label:'Almacenamiento',  s:stgS,  t:stgT,  name:stg==='nvme'?'NVMe':stg==='sata'?'SSD SATA':'HDD'},
@@ -220,7 +189,7 @@ function render(cpu,gpu,ram,stg,use){
   if((use==='vfx'||use==='animation')&&ram<32&&ramT!=='crit')
     warns.push({label:'RAM insuficiente para '+( use==='vfx'?'simulaciones VFX':'animaciones largas'),up:UPS.ram_med});
   if(OS==='mac'&&gpu.s>0&&!gpu.vk)
-    crits.push({label:'GPU incompatible con Metal en macOS',up:{name:'Actualizar a GPU con soporte Metal',why:'En macOS Blender usa Metal. GPUs antiguas o sin soporte Metal causarán fallo en Eevee y Cycles GPU.',q:'GPU Metal macOS Blender compatible'}});
+    crits.push({label:'GPU incompatible con Metal en macOS',up:{name:'Actualizar a GPU con soporte Metal',why:'En macOS Blender 5.x usa Metal. GPUs antiguas o sin soporte Metal causarán fallos.',q:'GPU Metal macOS Blender compatible'}});
 
   // — Construir tarjetas —
   function upCard(item){
@@ -274,15 +243,15 @@ function render(cpu,gpu,ram,stg,use){
   if(!crits.length&&!warns.length){
     rightCol=`<div class="tier-ok" style="padding:1.25rem">
       <p style="font-weight:700;color:#86efac;font-size:.95rem;margin-bottom:.4rem">🎉 ¡Setup sólido para Blender!</p>
-      <p style="font-size:.82rem;color:#9ca3af;line-height:1.6">Tu hardware cumple o supera los requisitos recomendados de Blender 4.x para tu uso declarado. No hay upgrades urgentes.</p>
+      <p style="font-size:.82rem;color:#9ca3af;line-height:1.6">Tu hardware cumple o supera los requisitos recomendados de Blender 5.x para tu uso declarado. No hay upgrades urgentes.</p>
     </div>`;}
 
   // ── Score ring ────────────────────────────────────────
   const sc=score>=65?'#22c55e':score>=40?'#f59e0b':'#ef4444';
   const circ=2*Math.PI*44;
   const tierLabel=score>=68?'Preparado (Gama Media+)':score>=42?'Funcional (Gama Baja)':'Necesita Upgrades';
-  const cycT=gpu.s>=70?'~2-5 min/frame 1080p':gpu.s>=45?'~10-25 min/frame':gpu.s>=20?'~45-90 min/frame':'Solo CPU: 90+ min/frame';
-  const eeveeT=gpu.s>=40?'60 FPS estable':gpu.s>=20?'Inestable / lenta':'Inutilizable';
+  const cycT=gpu.s>=4000?'~2-5 min/frame 1080p':gpu.s>=1500?'~10-25 min/frame':gpu.s>=500?'~45-90 min/frame':'Solo CPU: 90+ min/frame';
+  const eeveeT=gpu.s>=2000?'60 FPS estable':gpu.s>=800?'Inestable / lenta':'Inutilizable';
   const stgLabel={hdd:'HDD',sata:'SSD SATA',nvme:'NVMe'}[stg];
 
   const html=`
@@ -301,7 +270,7 @@ function render(cpu,gpu,ram,stg,use){
       </div>
     </div>
     <div style="flex:1;min-width:200px">
-      <p style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#6b7280;margin-bottom:.2rem">Puntaje de Rendimiento Blender 4.x</p>
+      <p style="font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:#6b7280;margin-bottom:.2rem">Puntaje de Rendimiento Blender 5.x</p>
       <p style="font-size:1.25rem;font-weight:900;color:#f3f4f6;margin-bottom:.1rem">${tierLabel}</p>
       <p style="font-size:.75rem;color:#6b7280;margin-bottom:.6rem">GPU 45% · CPU 30% · RAM 25%</p>
       <div style="display:flex;gap:1.4rem;flex-wrap:wrap">
