@@ -1,0 +1,59 @@
+*{box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0f1117;color:#f3f4f6;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background-image:linear-gradient(rgba(55,65,81,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(55,65,81,.07) 1px,transparent 1px);background-size:44px 44px;pointer-events:none}
+/* ── Form ── */
+.sel{width:100%;background:#1f2937;border:1px solid #374151;border-radius:.75rem;padding:.65rem .95rem;color:#f3f4f6;font-size:.85rem;outline:none;appearance:none;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.sel:focus{border-color:#E87D0D;box-shadow:0 0 0 3px rgba(232,125,13,.18)}
+.sw{position:relative}.sw::after{content:'▾';position:absolute;right:.9rem;top:50%;transform:translateY(-50%);color:#6b7280;pointer-events:none;font-size:.8rem}
+.lbl{display:block;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6b7280;margin-bottom:.35rem}
+.card{background:#1a1f2e;border:1px solid #2d3748;border-radius:1rem;padding:1.4rem}
+/* ── OS buttons ── */
+.osb{padding:.45rem .95rem;border-radius:.65rem;border:1px solid #374151;background:transparent;color:#6b7280;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s}
+.osb.on{border-color:rgba(232,125,13,.7);background:rgba(232,125,13,.12);color:#F59E0B}
+/* ── Analyse button ── */
+.btn-go{background:linear-gradient(135deg,#E87D0D,#F59E0B);color:#fff;font-weight:800;border:none;border-radius:.9rem;padding:.82rem 2.2rem;font-size:.95rem;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;box-shadow:0 4px 22px rgba(232,125,13,.38);transition:all .2s}
+.btn-go:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(232,125,13,.5)}
+.btn-go:disabled{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+/* ── Priority levels ── */
+/* Critical */
+.tier-crit{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.3);border-radius:.9rem;padding:1rem 1.1rem}
+.tier-crit-head{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem}
+.badge-crit{background:rgba(239,68,68,.18);border:1px solid rgba(239,68,68,.5);color:#fca5a5;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:9999px}
+/* Regular */
+.tier-warn{background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.3);border-radius:.9rem;padding:1rem 1.1rem}
+.tier-warn-head{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem}
+.badge-warn{background:rgba(249,115,22,.18);border:1px solid rgba(249,115,22,.4);color:#fdba74;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:9999px}
+/* Optimal */
+.tier-ok{background:rgba(34,197,94,.04);border:1px solid rgba(34,197,94,.2);border-radius:.9rem;padding:.85rem 1.1rem}
+.badge-ok{background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#86efac;font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;padding:3px 9px;border-radius:9999px}
+/* ── Component items ── */
+.comp-item{background:rgba(0,0,0,.25);border-radius:.75rem;padding:.8rem 1rem;display:flex;align-items:flex-start;gap:.65rem}
+.sdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.sdot-r{background:#ef4444;box-shadow:0 0 6px rgba(239,68,68,.6)}
+.sdot-o{background:#f97316;box-shadow:0 0 6px rgba(249,115,22,.5)}
+.sdot-g{background:#22c55e;box-shadow:0 0 6px rgba(34,197,94,.4)}
+/* ── Upgrade cards inside tiers ── */
+.up-card{background:rgba(0,0,0,.3);border-radius:.75rem;padding:.75rem .9rem;margin-top:.55rem}
+/* ── Shop buttons ── */
+.sbtn{display:inline-flex;align-items:center;gap:.3rem;padding:.35rem .8rem;border-radius:.55rem;font-size:.7rem;font-weight:700;text-decoration:none;transition:all .15s;white-space:nowrap}
+.s-amz{background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.35);color:#fbbf24}.s-amz:hover{background:rgba(251,191,36,.2)}
+.s-ggl{background:rgba(165,180,252,.1);border:1px solid rgba(165,180,252,.3);color:#a5b4fc}.s-ggl:hover{background:rgba(165,180,252,.2)}
+/* ── Progress ── */
+#pBar{height:100%;border-radius:9999px;background:linear-gradient(90deg,#E87D0D,#F59E0B);transition:width .5s}
+/* ── Mini bar ── */
+.mbar{height:5px;background:rgba(55,65,81,.5);border-radius:9999px;overflow:hidden;margin-top:.3rem}
+.mfill{height:100%;border-radius:9999px;transition:width 1s ease}
+/* ── Score ring ── */
+#sRing{transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1)}
+/* ── Spinner ── */
+.spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.2);border-top-color:#fff;border-radius:50%;animation:rot .7s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+/* ── Animations ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.fu{animation:fadeUp .4s ease both}
+/* ── Optional toggle ── */
+.opt-toggle{font-size:.75rem;color:#6b7280;cursor:pointer;display:flex;align-items:center;gap:.3rem;background:none;border:none;padding:.4rem 0;transition:color .2s;font-weight:600}
+.opt-toggle:hover{color:#F59E0B}
+#optSection{display:none}
+/* ── Scrollbar ── */
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#0f1117}::-webkit-scrollbar-thumb{background:#374151;border-radius:3px}

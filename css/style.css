@@ -1,0 +1,286 @@
+/* ============================================================
+   Blender HW Checker — Custom Styles
+   (Complementa a Tailwind CSS)
+   ============================================================ */
+
+/* ─── Animated background grid ──────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(15, 52, 96, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 52, 96, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridPan 20s linear infinite;
+}
+
+@keyframes gridPan {
+  0%   { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1A1A2E; }
+::-webkit-scrollbar-thumb { background: #0F3460; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #E87D0D; }
+
+/* ─── Selection ──────────────────────────────────────────────── */
+::selection {
+  background: rgba(232, 125, 13, 0.3);
+  color: #fff;
+}
+
+/* ─── Corner decorations in dropzone ────────────────────────── */
+.corner-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(232, 125, 13, 0.4);
+  transition: all 0.3s ease;
+}
+
+#dropzone:hover .corner-dot,
+#dropzone.drag-over .corner-dot {
+  background: rgba(232, 125, 13, 0.9);
+  box-shadow: 0 0 8px rgba(232, 125, 13, 0.6);
+}
+
+/* ─── Dropzone states ────────────────────────────────────────── */
+#dropzone {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#dropzone.drag-over {
+  border-color: rgba(232, 125, 13, 0.8) !important;
+  background: rgba(232, 125, 13, 0.05) !important;
+  transform: scale(1.01);
+}
+
+#dropzone.drag-over #dropGlow {
+  display: block !important;
+  animation: pulseGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0%   { opacity: 0.3; }
+  100% { opacity: 0.7; }
+}
+
+/* ─── Chip elements ──────────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  background: rgba(15, 52, 96, 0.5);
+  border: 1px solid rgba(15, 52, 96, 0.8);
+  border-radius: 9999px;
+  color: #9ca3af;
+  font-size: 0.7rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.chip:hover {
+  background: rgba(232, 125, 13, 0.1);
+  border-color: rgba(232, 125, 13, 0.4);
+  color: #f5a623;
+  transform: translateY(-1px);
+}
+
+/* ─── Feature cards (How it works) ──────────────────────────── */
+.feature-card {
+  position: relative;
+  padding: 1.75rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(15, 52, 96, 0.5);
+  background: rgba(22, 33, 62, 0.6);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(232, 125, 13, 0.03) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.feature-card:hover {
+  border-color: rgba(232, 125, 13, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(232, 125, 13, 0.08);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+}
+
+.step-number {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: rgba(15, 52, 96, 0.6);
+  font-family: 'JetBrains Mono', monospace;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ─── Tier cards ─────────────────────────────────────────────── */
+.tier-card {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid;
+  background: rgba(22, 33, 62, 0.4);
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.tier-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.25);
+}
+
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+}
+
+/* ─── Spec rows inside tier cards ────────────────────────────── */
+.spec-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(15, 52, 96, 0.25);
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.spec-value {
+  font-size: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+/* ─── FAQ accordion ──────────────────────────────────────────── */
+.faq-item {
+  border: 1px solid rgba(15, 52, 96, 0.4);
+  border-radius: 0.75rem;
+  background: rgba(22, 33, 62, 0.5);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.faq-item:hover {
+  border-color: rgba(232, 125, 13, 0.3);
+}
+
+.faq-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #f3f4f6;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.faq-trigger:hover {
+  color: #f5a623;
+}
+
+.faq-icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(15, 52, 96, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.2s ease;
+  color: #e87d0d;
+}
+
+.faq-icon.open {
+  transform: rotate(45deg);
+  background: rgba(232, 125, 13, 0.2);
+}
+
+.faq-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-body.open {
+  max-height: 400px;
+}
+
+.faq-content {
+  padding: 0 1.25rem 1rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  line-height: 1.7;
+  border-top: 1px solid rgba(15, 52, 96, 0.3);
+  padding-top: 0.75rem;
+}
+
+/* ─── Smooth focus outlines ──────────────────────────────────── */
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid rgba(232, 125, 13, 0.6);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Stat items hover ───────────────────────────────────────── */
+.stat-item {
+  transition: transform 0.2s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+}
+
+/* ─── Responsive adjustment ──────────────────────────────────── */
+@media (max-width: 640px) {
+  .tier-card { padding: 1.25rem; }
+  .feature-card { padding: 1.25rem; }
+}
+
+/* ─── Print ──────────────────────────────────────────────────── */
+@media print {
+  .grid-bg, nav, footer { display: none; }
+  body { background: #fff; color: #000; }
+}
