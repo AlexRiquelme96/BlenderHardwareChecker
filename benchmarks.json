@@ -20,6 +20,11 @@
         "score": 8589.72
     },
     {
+        "nombre": "NVIDIA GeForce RTX 4080",
+        "tipo": "GPU",
+        "score": 8483.31
+    },
+    {
         "nombre": "NVIDIA GeForce RTX 5070 Ti",
         "tipo": "GPU",
         "score": 7750.47
@@ -28,6 +33,11 @@
         "nombre": "NVIDIA GeForce RTX 4070 Ti SUPER",
         "tipo": "GPU",
         "score": 7125.34
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4070 Ti",
+        "tipo": "GPU",
+        "score": 6850.12
     },
     {
         "nombre": "NVIDIA GeForce RTX 5070",
@@ -50,9 +60,24 @@
         "score": 5744.10
     },
     {
+        "nombre": "NVIDIA GeForce RTX 4070",
+        "tipo": "GPU",
+        "score": 5120.45
+    },
+    {
         "nombre": "AMD Radeon RX 7900 XTX",
         "tipo": "GPU",
         "score": 4686.02
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3080 Ti",
+        "tipo": "GPU",
+        "score": 4450.10
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3080",
+        "tipo": "GPU",
+        "score": 4150.30
     },
     {
         "nombre": "NVIDIA GeForce RTX 4060 Ti",
@@ -60,14 +85,29 @@
         "score": 3889.86
     },
     {
+        "nombre": "AMD Radeon RX 7900 XT",
+        "tipo": "GPU",
+        "score": 3720.15
+    },
+    {
         "nombre": "NVIDIA GeForce RTX 3070 Ti",
         "tipo": "GPU",
         "score": 3650.12
     },
     {
+        "nombre": "NVIDIA GeForce RTX 3070",
+        "tipo": "GPU",
+        "score": 3320.45
+    },
+    {
         "nombre": "NVIDIA GeForce RTX 4060",
         "tipo": "GPU",
         "score": 3132.83
+    },
+    {
+        "nombre": "AMD Radeon RX 6950 XT",
+        "tipo": "GPU",
+        "score": 3050.10
     },
     {
         "nombre": "AMD Radeon RX 7800 XT",
@@ -80,9 +120,24 @@
         "score": 2780.45
     },
     {
+        "nombre": "NVIDIA GeForce RTX 2080 Ti",
+        "tipo": "GPU",
+        "score": 2550.10
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4060 Laptop GPU",
+        "tipo": "GPU",
+        "score": 2350.20
+    },
+    {
         "nombre": "NVIDIA GeForce RTX 3060",
         "tipo": "GPU",
         "score": 2060.77
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 2080 Super",
+        "tipo": "GPU",
+        "score": 1980.40
     },
     {
         "nombre": "Apple M4 Max (GPU)",
@@ -90,9 +145,44 @@
         "score": 1950.30
     },
     {
+        "nombre": "NVIDIA GeForce RTX 4050 Laptop GPU",
+        "tipo": "GPU",
+        "score": 1820.15
+    },
+    {
+        "nombre": "AMD Radeon RX 6700 XT",
+        "tipo": "GPU",
+        "score": 1780.40
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 2070 Super",
+        "tipo": "GPU",
+        "score": 1650.30
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3060 Laptop GPU",
+        "tipo": "GPU",
+        "score": 1580.45
+    },
+    {
         "nombre": "NVIDIA GeForce RTX 2060",
         "tipo": "GPU",
         "score": 1450.25
+    },
+    {
+        "nombre": "AMD Radeon RX 7600",
+        "tipo": "GPU",
+        "score": 1380.15
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+        "tipo": "GPU",
+        "score": 1220.40
+    },
+    {
+        "nombre": "AMD Radeon RX 6600 XT",
+        "tipo": "GPU",
+        "score": 1180.30
     },
     {
         "nombre": "AMD Radeon RX 6600",
@@ -105,9 +195,39 @@
         "score": 980.15
     },
     {
+        "nombre": "NVIDIA GeForce RTX 2060 Laptop GPU",
+        "tipo": "GPU",
+        "score": 920.40
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1080 Ti",
+        "tipo": "GPU",
+        "score": 880.30
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1080",
+        "tipo": "GPU",
+        "score": 750.45
+    },
+    {
         "nombre": "NVIDIA GeForce GTX 1660 SUPER",
         "tipo": "GPU",
         "score": 642.51
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1660 Ti",
+        "tipo": "GPU",
+        "score": 610.20
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1070",
+        "tipo": "GPU",
+        "score": 580.40
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1660",
+        "tipo": "GPU",
+        "score": 520.15
     },
     {
         "nombre": "NVIDIA GeForce GTX 1060 6GB",
@@ -118,6 +238,11 @@
         "nombre": "NVIDIA GeForce GTX 1650",
         "tipo": "GPU",
         "score": 380.12
+    },
+    {
+        "nombre": "AMD Radeon RX 580",
+        "tipo": "GPU",
+        "score": 320.45
     },
     {
         "nombre": "NVIDIA GeForce GTX 1050 Ti",
