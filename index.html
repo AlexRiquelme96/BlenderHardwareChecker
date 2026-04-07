@@ -47,8 +47,16 @@
       Especificaciones de tu equipo
     </h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem">
-      <div><label class="lbl" for="sCPU">🔲 CPU (Procesador)</label><div class="sw"><select id="sCPU" class="sel"></select></div></div>
-      <div><label class="lbl" for="sGPU">🎮 GPU (Tarjeta gráfica)</label><div class="sw"><select id="sGPU" class="sel"></select></div></div>
+      <div>
+        <label class="lbl" for="sCPU">🔲 CPU (Procesador)</label>
+        <div class="sw"><input type="text" id="sCPU" list="cpuList" class="sel" placeholder="Escribe para buscar..." autocomplete="off"></div>
+        <datalist id="cpuList"></datalist>
+      </div>
+      <div>
+        <label class="lbl" for="sGPU">🎮 GPU (Tarjeta gráfica)</label>
+        <div class="sw"><input type="text" id="sGPU" list="gpuList" class="sel" placeholder="Escribe para buscar..." autocomplete="off"></div>
+        <datalist id="gpuList"></datalist>
+      </div>
       <div><label class="lbl" for="sRAM">💾 Memoria RAM</label><div class="sw"><select id="sRAM" class="sel">
         <option value="4">4 GB</option><option value="8">8 GB</option>
         <option value="16" selected>16 GB</option><option value="32">32 GB</option><option value="64">64 GB o más</option>
