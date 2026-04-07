@@ -1,40 +1,6 @@
-const DB = [
-  // GPUs
-  {n:"NVIDIA RTX 4090",t:"G",s:13500,v:24,rt:true,vk:true},
-  {n:"NVIDIA RTX 4080",t:"G",s:9500,v:16,rt:true,vk:true},
-  {n:"NVIDIA RTX 4070 Ti",t:"G",s:7300,v:12,rt:true,vk:true},
-  {n:"NVIDIA RTX 4070",t:"G",s:5500,v:12,rt:true,vk:true},
-  {n:"NVIDIA RTX 4060 Ti",t:"G",s:3800,v:8,rt:true,vk:true},
-  {n:"NVIDIA RTX 4060",t:"G",s:3000,v:8,rt:true,vk:true},
-  {n:"NVIDIA RTX 3080",t:"G",s:5200,v:10,rt:true,vk:true},
-  {n:"NVIDIA RTX 3070",t:"G",s:3600,v:8,rt:true,vk:true},
-  {n:"NVIDIA RTX 3060",t:"G",s:2400,v:12,rt:true,vk:true},
-  {n:"NVIDIA RTX 3050",t:"G",s:1500,v:8,rt:true,vk:true},
-  {n:"NVIDIA GTX 1660 Super",t:"G",s:850,v:6,rt:false,vk:true},
-  {n:"NVIDIA GTX 1650",t:"G",s:500,v:4,rt:false,vk:true},
-  {n:"AMD Radeon RX 7800 XT",t:"G",s:3200,v:16,rt:true,vk:true},
-  {n:"AMD Radeon RX 7600",t:"G",s:1800,v:8,rt:true,vk:true},
-  {n:"AMD Radeon RX 6600",t:"G",s:1200,v:8,rt:true,vk:true},
-  // CPUs
-  {n:"AMD Ryzen 9 7950X",t:"C",s:580,c:16},
-  {n:"AMD Ryzen 9 7900X",t:"C",s:450,c:12},
-  {n:"AMD Ryzen 7 7800X3D",t:"C",s:280,c:8},
-  {n:"AMD Ryzen 5 7600X",t:"C",s:210,c:6},
-  {n:"AMD Ryzen 9 5950X",t:"C",s:380,c:16},
-  {n:"AMD Ryzen 7 5800X",t:"C",s:220,c:8},
-  {n:"AMD Ryzen 7 5700X",t:"C",s:200,c:8},
-  {n:"AMD Ryzen 5 5600X",t:"C",s:160,c:6},
-  {n:"AMD Ryzen 5 5600G",t:"C",s:140,c:6},
-  {n:"Intel Core i9-14900K",t:"C",s:600,c:24},
-  {n:"Intel Core i7-14700K",t:"C",s:520,c:20},
-  {n:"Intel Core i5-14600K",t:"C",s:360,c:14},
-  {n:"Intel Core i9-13900K",t:"C",s:580,c:24},
-  {n:"Intel Core i5-13600K",t:"C",s:340,c:14},
-  {n:"Intel Core i5-12400F",t:"C",s:160,c:6}
-];
-
 let CPUS = [];
 let GPUS = [];
+
 
 const UPS = {
   gpu_none:   {name:"RTX 3060 12GB", why:"Sin GPU, Cycles es 10-50x más lento.", q:"NVIDIA RTX 3060 12GB"},
@@ -73,10 +39,33 @@ function tier(s, critBelow, warnBelow) { return s<critBelow ? 'crit' : s<warnBel
 function sdot(t) { return `<div class="sdot ${t==='crit'?'sdot-r':t==='warn'?'sdot-o':'sdot-g'}"></div>`; }
 function minib(pct,t) { const col=t==='crit'?'#ef4444':t==='warn'?'#f97316':'#22c55e'; return `<div class="mbar"><div class="mfill" style="width:${Math.min(100,pct)}%;background:${col}"></div></div>`; }
 
-function init() {
-  CPUS = []; GPUS = [];
-  DB.forEach(x => x.t==='C'? CPUS.push(x) : GPUS.push(x));
-  
+async function init() {
+  try {
+    const response = await fetch('benchmarks.json');
+    if(!response.ok) throw new Error('Error al cargar archivo local');
+    const data = await response.json();
+    
+    CPUS = [{n:"— Selecciona CPU —", s:0, c:0}];
+    GPUS = [{n:"— Selecciona GPU —", s:0, v:0, rt:false, vk:false}];
+    
+    data.forEach(item => {
+      if (item.tipo === "CPU") {
+        CPUS.push({ n: item.nombre, s: item.score, c: 8 }); 
+      } else if (item.tipo === "GPU") {
+        const vMatch = item.nombre.match(/(\d+)\s*GB/i);
+        let vram = vMatch ? parseInt(vMatch[1]) : (item.score > 4000 ? 12 : (item.score > 1500 ? 8 : 4));
+        let rt = item.nombre.includes("RTX") || item.nombre.includes("RX 6") || item.nombre.includes("RX 7");
+        let vk = !item.nombre.includes("Iris") && !item.nombre.includes("M1") && !item.nombre.includes("M2"); 
+        
+        GPUS.push({ n: item.nombre, s: item.score, v: vram, rt: rt, vk: vk });
+      }
+    });
+
+  } catch(error) {
+    console.warn("⚠️ Error cargando benchmarks.json:", error);
+    toast("Error cargando la base de datos de componentes.", "error");
+  }
+
   const cList = document.getElementById('cpuList');
   const gList = document.getElementById('gpuList');
   if(cList && gList) {
