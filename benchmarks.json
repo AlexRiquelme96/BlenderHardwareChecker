@@ -1,0 +1,252 @@
+[
+    {
+        "nombre": "NVIDIA GeForce RTX 5090",
+        "tipo": "GPU",
+        "score": 16306.81
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4090",
+        "tipo": "GPU",
+        "score": 11679.12
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 5080",
+        "tipo": "GPU",
+        "score": 9455.9
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4080 SUPER",
+        "tipo": "GPU",
+        "score": 8589.72
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 5070 Ti",
+        "tipo": "GPU",
+        "score": 7750.47
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4070 Ti SUPER",
+        "tipo": "GPU",
+        "score": 7125.34
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 5070",
+        "tipo": "GPU",
+        "score": 6241.15
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3090 Ti",
+        "tipo": "GPU",
+        "score": 6125.40
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4070 SUPER",
+        "tipo": "GPU",
+        "score": 5988.22
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3090",
+        "tipo": "GPU",
+        "score": 5744.10
+    },
+    {
+        "nombre": "AMD Radeon RX 7900 XTX",
+        "tipo": "GPU",
+        "score": 4686.02
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4060 Ti",
+        "tipo": "GPU",
+        "score": 3889.86
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3070 Ti",
+        "tipo": "GPU",
+        "score": 3650.12
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 4060",
+        "tipo": "GPU",
+        "score": 3132.83
+    },
+    {
+        "nombre": "AMD Radeon RX 7800 XT",
+        "tipo": "GPU",
+        "score": 2845.50
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3060 Ti",
+        "tipo": "GPU",
+        "score": 2780.45
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3060",
+        "tipo": "GPU",
+        "score": 2060.77
+    },
+    {
+        "nombre": "Apple M4 Max (GPU)",
+        "tipo": "GPU",
+        "score": 1950.30
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 2060",
+        "tipo": "GPU",
+        "score": 1450.25
+    },
+    {
+        "nombre": "AMD Radeon RX 6600",
+        "tipo": "GPU",
+        "score": 1150.80
+    },
+    {
+        "nombre": "NVIDIA GeForce RTX 3050",
+        "tipo": "GPU",
+        "score": 980.15
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1660 SUPER",
+        "tipo": "GPU",
+        "score": 642.51
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1060 6GB",
+        "tipo": "GPU",
+        "score": 420.30
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1650",
+        "tipo": "GPU",
+        "score": 380.12
+    },
+    {
+        "nombre": "NVIDIA GeForce GTX 1050 Ti",
+        "tipo": "GPU",
+        "score": 195.02
+    },
+    {
+        "nombre": "AMD Ryzen 9 9950X 16-Core Processor",
+        "tipo": "CPU",
+        "score": 682.96
+    },
+    {
+        "nombre": "AMD Ryzen 9 7950X 16-Core Processor",
+        "tipo": "CPU",
+        "score": 586.25
+    },
+    {
+        "nombre": "Intel Core i9-14900K",
+        "tipo": "CPU",
+        "score": 531.35
+    },
+    {
+        "nombre": "Intel Core i9-13900K",
+        "tipo": "CPU",
+        "score": 510.20
+    },
+    {
+        "nombre": "Intel Core i7-14700K",
+        "tipo": "CPU",
+        "score": 464.46
+    },
+    {
+        "nombre": "AMD Ryzen 9 5950X 16-Core Processor",
+        "tipo": "CPU",
+        "score": 404.71
+    },
+    {
+        "nombre": "Intel Core i7-13700K",
+        "tipo": "CPU",
+        "score": 390.15
+    },
+    {
+        "nombre": "AMD Ryzen 9 7900X 12-Core Processor",
+        "tipo": "CPU",
+        "score": 385.40
+    },
+    {
+        "nombre": "AMD Ryzen 7 9700X 8-Core Processor",
+        "tipo": "CPU",
+        "score": 342.91
+    },
+    {
+        "nombre": "Intel Core i5-14600K",
+        "tipo": "CPU",
+        "score": 322.76
+    },
+    {
+        "nombre": "AMD Ryzen 7 7800X3D 8-Core Processor",
+        "tipo": "CPU",
+        "score": 293.68
+    },
+    {
+        "nombre": "AMD Ryzen 9 5900X 12-Core Processor",
+        "tipo": "CPU",
+        "score": 285.10
+    },
+    {
+        "nombre": "Intel Core i5-13600K",
+        "tipo": "CPU",
+        "score": 275.40
+    },
+    {
+        "nombre": "AMD Ryzen 7 5800X 8-Core Processor",
+        "tipo": "CPU",
+        "score": 215.30
+    },
+    {
+        "nombre": "Intel Core i7-12700K",
+        "tipo": "CPU",
+        "score": 210.15
+    },
+    {
+        "nombre": "AMD Ryzen 5 7600X 6-Core Processor",
+        "tipo": "CPU",
+        "score": 198.45
+    },
+    {
+        "nombre": "AMD Ryzen 5 5600X 6-Core Processor",
+        "tipo": "CPU",
+        "score": 176.63
+    },
+    {
+        "nombre": "Intel Core i5-12400",
+        "tipo": "CPU",
+        "score": 158.6
+    },
+    {
+        "nombre": "AMD Ryzen 5 5600G",
+        "tipo": "CPU",
+        "score": 153.22
+    },
+    {
+        "nombre": "Intel Core i5-11400",
+        "tipo": "CPU",
+        "score": 135.20
+    },
+    {
+        "nombre": "AMD Ryzen 5 3600 6-Core Processor",
+        "tipo": "CPU",
+        "score": 125.40
+    },
+    {
+        "nombre": "Intel Core i7-10700K",
+        "tipo": "CPU",
+        "score": 118.90
+    },
+    {
+        "nombre": "Intel Core i5-10400F CPU @ 2.90GHz",
+        "tipo": "CPU",
+        "score": 102.15
+    },
+    {
+        "nombre": "Intel Core i3-12100",
+        "tipo": "CPU",
+        "score": 95.30
+    },
+    {
+        "nombre": "Intel Core i3-10100F CPU @ 3.60GHz",
+        "tipo": "CPU",
+        "score": 78.61
+    }
+]
